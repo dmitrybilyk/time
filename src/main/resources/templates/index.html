@@ -1,10 +1,100 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Users</title>
+    <link href="/css/main.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@562;700&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!--    <script src="/js/main.js"></script>-->
 </head>
 <body>
-    Something
+<main>
+<!--    <header>-->
+<!--        <h1>Users</h1>-->
+<!--        <div class="logout">-->
+<!--            <div sec:authorize="hasRole('ROLE_USER')"><small><a class="form-submit btn"-->
+<!--                                                                th:href="@{/user-profile/view/{login}(login=${#authentication.getPrincipal().getUsername()})}">-->
+<!--                <span th:text="${#authentication.getPrincipal().getUsername()}"></span> profile</a></small></div>-->
+<!--            <div sec:authorize="hasRole('ROLE_ADMIN')"><span-->
+<!--                    th:text="${#authentication.getPrincipal().getUsername()}"></span></div>-->
+<!--            <button class="btn form-submit" onclick="window.location.href='/logout';">Logout</button>-->
+<!--            <button class="btn form-submit" sec:authorize="hasRole('ROLE_ADMIN')"-->
+<!--                    onclick="window.location.href='/item/add/go';">Add Item-->
+<!--            </button>-->
+<!--        </div>-->
+<!--        <div class="header-panel">-->
+<!--            <div class="filter-search">-->
+<!--                <form action="#" th:action="@{/items}" method="get">-->
+<!--                    <input class="btn" type="text" name="searchParam" id="param" th:value="${searchParam}">-->
+<!--                    <input class="form-submit" type="submit" value="Search">-->
+<!--                </form>-->
+<!--            </div>-->
+<!--            <div class="filter-sort">-->
+<!--                <form action="#" th:action="@{/items}" method="get">-->
+<!--                    <select class="btn" id="sortOrder" name="sortOrder">-->
+<!--                        <option class="sort" th:selected="${sortOrder} == 'default'" value="default">Default</option>-->
+<!--                        <option class="sort" th:selected="${sortOrder} == 'ASC'" value="ASC">Sort by Price ascending-->
+<!--                        </option>-->
+<!--                        <option class="sort" th:selected="${sortOrder} == 'DESC'" value="DESC">Sort by Price-->
+<!--                            descending-->
+<!--                        </option>-->
+<!--                    </select>-->
+<!--                    <input class="form-submit" type="submit" value="Sort">-->
+<!--                </form>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </header>-->
+
+    <div id="container">
+        <div id="main-grid">
+            <div th:each="endUser: ${endUsers}">
+                <span th:text="${endUser.login}"></span>
+            </div>
+<!--                <div class="item">-->
+<!--                    <div class="flex-box">-->
+<!--&lt;!&ndash;                        <img th:src="@{/items/images/{id}(id=${item.id})}" alt="No image"&ndash;&gt;-->
+<!--&lt;!&ndash;                             style="height:200px;width:200px">&ndash;&gt;-->
+<!--                        <div class="flex-2">Name:-->
+<!--                            <span th:text="${endUser.login}"></span></div>-->
+<!--&lt;!&ndash;                        <div class="flex-2">Price:&ndash;&gt;-->
+<!--&lt;!&ndash;                            <span th:text="${item.currentPrice}"></span></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <div class="flex-2" th:if="${item.awarded}">Auction is finished</div>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <div class="flex-2" sec:authorize="hasRole('ROLE_USER')">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <a class="form-submit" th:href="@{/item/details/{id}(id=${item.id})}">Bid Now</a>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <div id="admin-access" class="flex-1" sec:authorize="hasRole('ROLE_ADMIN')">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <a class="form-submit" th:href="@{/item/details/{id}(id=${item.id})}">Item&ndash;&gt;-->
+<!--&lt;!&ndash;                                Details</a>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <a class="form-submit" th:href="@{/item/edit/view/{id}(id=${item.id})}">Edit</a>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <a class="form-submit" th:method="Delete"&ndash;&gt;-->
+<!--&lt;!&ndash;                               th:href="@{/item/delete/{id}(id=${item.id})}">Delete</a>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
+<!--                    </div>-->
+<!--                </div>-->
+            </div>
+        </div>
+    </div>
+</main>
+
+<!--<footer>-->
+<!--    <div class="pagination">-->
+<!--        <div class="pagination-control left-arrow"><a-->
+<!--                th:href="@{/items(size=${itemPage.size}, page=1, sortOrder=${sortOrder}, searchParam=${searchParam})}"-->
+<!--        ><<</a></div>-->
+<!--        <div class="number-button" th:if="${itemPage.totalPages > 0}"-->
+<!--             th:each="pageNumber : ${pageNumbers}">-->
+<!--            <a th:href="@{/items(size=${itemPage.size}, page=${pageNumber}, sortOrder=${sortOrder}, searchParam=${searchParam})}"-->
+<!--               th:text=${pageNumber}-->
+<!--               th:class="${pageNumber==itemPage.number + 1} ? active"></a>-->
+<!--        </div>-->
+<!--        <div class="pagination-control right-arrow"><a-->
+<!--                th:href="@{/items(size=${itemPage.size}, page=${itemPage.totalPages}, sortOrder=${sortOrder}, searchParam=${searchParam})}"-->
+<!--        >>></a></div>-->
+<!--    </div>-->
+<!--</footer>-->
+
 </body>
 </html>
