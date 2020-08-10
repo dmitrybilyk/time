@@ -5,15 +5,19 @@ import com.count.time.model.User;
 import com.count.time.repositories.RoleRepository;
 import com.count.time.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ResolvableType;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.oauth2.client.registration.ClientRegistration;
+import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.transaction.Transactional;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 public class LoginController {
@@ -31,10 +35,39 @@ public class LoginController {
 
     @GetMapping(value = "/login")
     public ModelAndView login() {
-        addUsersAndRolesIfNeeded();
         ModelAndView modelAndView = new ModelAndView();
+        addUsersAndRolesIfNeeded();
+
+        Iterable<ClientRegistration> clientRegistrations = null;
+        ResolvableType type = ResolvableType.forInstance(clientRegistrationRepository)
+                .as(Iterable.class);
+        if (type != ResolvableType.NONE &&
+                ClientRegistration.class.isAssignableFrom(type.resolveGenerics()[0])) {
+            clientRegistrations = (Iterable<ClientRegistration>) clientRegistrationRepository;
+        }
+
+        clientRegistrations.forEach(registration ->
+                oauth2AuthenticationUrls.put(registration.getClientName(),
+                        authorizationRequestBaseUri + "/" + registration.getRegistrationId()));
+        modelAndView.addObject("urls", oauth2AuthenticationUrls);
+
         modelAndView.setViewName("login");
         return modelAndView;
+    }
+
+    private static String authorizationRequestBaseUri
+            = "oauth2/authorization";
+    Map<String, String> oauth2AuthenticationUrls
+            = new HashMap<>();
+
+    @Autowired
+    private ClientRegistrationRepository clientRegistrationRepository;
+
+    @GetMapping("/oauth_login")
+    public String getLoginPage(Model model) {
+        // ...
+
+        return "oauth_login";
     }
 
 
