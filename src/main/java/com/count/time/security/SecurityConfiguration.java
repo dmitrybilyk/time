@@ -30,54 +30,6 @@
 //        this.oidcUserService = oidcUserService;
 //    }
 //
-//    @Override
-//    protected void configure(HttpSecurity http) throws Exception {
-//        http.authorizeRequests()
-//                .antMatchers("/registration", "/css/**", "/v2/api-docs",
-//                        "/swagger-resources/configuration/ui", "/swagger-resources",
-//                        "/swagger-resources/configuration/security", "/swagger-ui.html",
-//                        "/webjars/**").permitAll()
-//                .anyRequest()
-//                .authenticated()
-//                .and()
-//                .oauth2Login()
-////                .redirectionEndpoint()
-////                .baseUri("/oauth2/callback/*")
-////                .and()
-//                .userInfoEndpoint()
-//                .oidcUserService(oidcUserService)
-//                .and()
-//                .loginPage("/login")
-//                .and()
-//                .formLogin()
-//                .loginPage("/login")
-//                .permitAll()
-//                .successForwardUrl("/index")
-//                .and().httpBasic()
-//                .and()
-//                .logout()
-//                .permitAll()
-//                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-//                .logoutSuccessUrl("/login")
-//                .and()
-////                .and().authenticationProvider(authProvider)
-//                .cors().and().csrf().disable();
-//    }
 //
-//
-////    @Override
-////    protected void configure(AuthenticationManagerBuilder auth)
-////    {
-////        auth.authenticationProvider(authProvider);
-////    }
-//
-//    @Autowired
-//    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.userDetailsService(userDetailsService);
-//    }
-//
-//    @Bean
-//    public BCryptPasswordEncoder passwordEncoder() {
-//        return new BCryptPasswordEncoder();
-//    }
+
 //}
