@@ -53,13 +53,15 @@ public class JWTSecurityConfig extends WebSecurityConfigurerAdapter {
         return super.authenticationManagerBean();
     }
 
+
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/registration", "/css/**", "/v2/api-docs",
                         "/swagger-resources/configuration/ui", "/swagger-resources",
                         "/swagger-resources/configuration/security", "/swagger-ui.html",
-                        "/webjars/**").permitAll()
+                        "/webjars/**", "/actuator/prometheus", "/actuator/prometheus/api/v1/query").permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()
