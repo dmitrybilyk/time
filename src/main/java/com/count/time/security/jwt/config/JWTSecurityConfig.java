@@ -61,7 +61,7 @@ public class JWTSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/registration", "/css/**", "/v2/api-docs",
                         "/swagger-resources/configuration/ui", "/swagger-resources",
                         "/swagger-resources/configuration/security", "/swagger-ui.html",
-                        "/webjars/**", "/actuator/prometheus", "/actuator/prometheus/api/v1/query", "/**").permitAll()
+                        "/webjars/**", "/actuator/prometheus", "/actuator/prometheus/api/v1/query").permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()
