@@ -9,6 +9,10 @@ import com.count.time.repositories.UserRepository;
 import com.count.time.services.CustomerService;
 import com.count.time.services.EndUserService;
 import com.count.time.services.ServiceService;
+import lombok.extern.slf4j.Slf4j;
+import org.keycloak.adapters.RefreshableKeycloakSecurityContext;
+import org.keycloak.adapters.springsecurity.token.KeycloakAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +24,7 @@ import java.security.Principal;
 import java.util.Collections;
 import java.util.List;
 
+@Slf4j
 @Controller
 public class MainController {
 
@@ -84,6 +89,9 @@ public class MainController {
     @GetMapping(path = "/customers")
     public String customers(Principal principal, Model model) {
         addCustomers();
+        log.info(((RefreshableKeycloakSecurityContext)((KeycloakAuthenticationToken) SecurityContextHolder.getContext().getAuthentication())
+                .getCredentials()).getRefreshToken()
+        );
         Iterable<Customer> customers = customerRepository.findAll();
         model.addAttribute("customers", customers);
 //        model.addAttribute("username", principal.getName());
