@@ -14,6 +14,8 @@ public class Customer {
     private int id;
     private String name;
     private String phone;
+    private String address;
+    private String serviceRendered;
 
     public Customer() {
     }
@@ -50,5 +52,21 @@ public class Customer {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setServiceRendered(String serviceRendered) {
+        this.serviceRendered = serviceRendered;
+    }
+
+    public String getServiceRendered() {
+        return serviceRendered;
     }
 }
