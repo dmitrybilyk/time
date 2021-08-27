@@ -2,7 +2,9 @@ package com.count.time.model;
 
 import javax.persistence.*;
 import java.util.Collection;
-
+/**
+ * 
+ */
 @Entity
 public class Role {
 
