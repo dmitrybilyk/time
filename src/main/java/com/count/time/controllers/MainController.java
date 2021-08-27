@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.Collections;
 import java.util.List;
 
 @Controller
@@ -35,8 +36,11 @@ public class MainController {
     @RequestMapping(value = {"/", "/index"})
     public ModelAndView index() {
         Role userRole = roleRepository.findByName("USER");
-        List<User> endUsers = userRepository.findAllByRolesContaining(userRole);
         ModelAndView modelAndView = new ModelAndView();
+        List<User> endUsers = Collections.emptyList();
+        if (userRole != null) {
+            endUsers = userRepository.findAllByRolesContaining(userRole);
+        }
         modelAndView.addObject("endUsers", endUsers);
 //        modelAndView.setViewName("index");
         modelAndView.setViewName("scheduler");
