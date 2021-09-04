@@ -7,10 +7,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @Data
 @Entity
 @NoArgsConstructor
+@XmlRootElement(name = "coffeeRecord")
 public class Coffee {
 
     @Id
