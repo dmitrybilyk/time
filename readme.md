@@ -11,6 +11,10 @@ Run spring boot image:
 
 
 
+Run Rabbit:
+docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3.8-management
+
+0.0.0.0:15672 > guest/guest
 
 
 Keycloak test:
