@@ -27,7 +27,7 @@ import java.util.Map;
  * @version 1.0
  */
 
-@RestController
+//@RestController
 @RequestMapping(value = "/api/v1/auth/")
 public class AuthenticationRestControllerV1 {
 

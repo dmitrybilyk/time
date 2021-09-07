@@ -19,7 +19,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-@RestController
+//@RestController
 public class LoginController {
     private final RoleRepository roleRepository;
     private final PasswordEncoder passwordEncoder;

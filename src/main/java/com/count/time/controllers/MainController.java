@@ -25,7 +25,7 @@ import java.util.Collections;
 import java.util.List;
 
 @Slf4j
-@Controller
+//@Controller
 public class MainController {
 
     private CustomerService customerService;
