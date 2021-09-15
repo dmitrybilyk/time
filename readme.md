@@ -6,10 +6,12 @@ Run mysql docker image:
 docker run -d -v $(pwd):/tmp --name mysql -p 3306:3306 -e MYSQL_ROOT_USERNAME=root -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=time mysql:5.7
 
 Run spring boot image:
-1. docker build .
+1. docker build . -t time
 2. 
 
 
+Postgres
+ docker run -p 5432:5432 -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=time -d --rm --name postgres  postgres:9.6
 
 Run Rabbit:
 docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3.8-management
