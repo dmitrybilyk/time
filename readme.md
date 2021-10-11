@@ -11,7 +11,7 @@ Run spring boot image:
 
 
 Postgres
- docker run -p 5432:5432 -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=time -d --rm --name postgres  postgres:9.6
+ docker run -p 5434:5432 -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=time -d --rm --name postgres  postgres:9.6
 
 Run Rabbit:
 docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3.8-management
