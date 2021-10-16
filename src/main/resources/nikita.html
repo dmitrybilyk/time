@@ -1,14 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html style="background-color: aquamarine" lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script src="static/js/nikita.js"></script>
+
     <link rel="stylesheet" type="text/css" href="static/css/nikita.css">
 </head>
-<body>
+<body style="background-color: #ff3c42">
+<p  id="p1" class="aboutLanguage">
+   gaee
+</p>
+<p id="p2" class="aboutLanguage">
+    toy124
+</p>
+<p   class="aboutLanguage">
+    lam
+</p>
 
-<p id="target" style="color:red;">Nikita Bilyk</p>
-<p id='changeColor1' onclick="changeColor()">change color</p>
+<form action="http://localhost:8000/" method="post">
+    <label for="fname">First name:</label><br>
+    <input type="text" id="fname" name="fname" value="John"><br>
+    <label for="lname">Last name:</label><br>
+    <input type="text" id="lname" name="lname" value="Doe"><br><br>
+    <input type="submit" value="Submit">
+</form>
+
+<form action="http://localhost:8000/">
+    <label for="fname2">First name:</label><br>
+    <input type="text" id="fname2" name="fname" value="John"><br>
+    <label for="lname2">Last name:</label><br>
+    <input type="text" id="lname2" name="lname" value="Doe"><br><br>
+    <input type="submit" value="Submit">
+</form>
+
+<script src="static/js/nikita.js"></script>
 </body>
 </html>

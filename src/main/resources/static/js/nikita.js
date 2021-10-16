@@ -1,3 +1,5 @@
 function changeColor() {
-    document.getElementById('target').style.color = 'green';
+    var p2 = 'ddfdfdfdf';
+    document.getElementById('p2').style.color = 'green';
 }
+changeColor();
