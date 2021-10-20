@@ -27,6 +27,4 @@ public class Coffee {
         this.origin = origin;
         this.characteristics = characteristics;
     }
-
-    // getters and setters
 }
